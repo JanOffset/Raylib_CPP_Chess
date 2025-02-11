@@ -3,8 +3,8 @@
 int main()
 {
 
-    const int screen_width = 800;
-    const int screen_height = 800;
+    const int screen_width = 840;
+    const int screen_height = 840;
     const int square_size = 100;
     const int board_offset = 40;
 
@@ -14,14 +14,14 @@ int main()
     while (!WindowShouldClose())
     {
         BeginDrawing();
-        ClearBackground(WHITE);
+        ClearBackground(BLACK);
 
         for (int row = 0; row < 8; row++)
         {
             for (int col = 0; col < 8; col++)
             {
-                int x = row * square_size;
-                int y = col * square_size;
+                int x = row * square_size + board_offset;
+                int y = col * square_size + board_offset;
 
                 Color squareColor;
                 if ((col + row) %2 == 0)
@@ -34,6 +34,14 @@ int main()
             }
             
         }
+        
+        for (int i = 0; i < 8; i++)
+        {   
+            DrawText(TextFormat("%d", 8 - i),screen_width - 820, i * square_size + board_offset + square_size/3,20,GRAY);
+            DrawText(TextFormat("%c", 'A' + i),i * square_size + board_offset + square_size/3, screen_height - 820, 20, GRAY);
+        
+        }
+        
         
         EndDrawing();
     }
