@@ -1,4 +1,5 @@
 #include "raylib.h"
+#include "Pawn.h"
 
 int main()
 {
@@ -11,11 +12,13 @@ int main()
     InitWindow(screen_width,screen_height, "Chess");
     SetTargetFPS(60);
 
+    Texture2D pawnTexture = LoadTexture("Assets/chess_king.png");    
     while (!WindowShouldClose())
     {
         BeginDrawing();
         ClearBackground(BLACK);
-
+        DrawTexture(pawnTexture,200,200,WHITE);
+        
         for (int row = 0; row < 8; row++)
         {
             for (int col = 0; col < 8; col++)
@@ -35,13 +38,10 @@ int main()
             
         }
         
-        for (int i = 0; i < 8; i++)
-        {   
-            DrawText(TextFormat("%d", 8 - i),screen_width - 820, i * square_size + board_offset + square_size/3,20,GRAY);
-            DrawText(TextFormat("%c", 'A' + i),i * square_size + board_offset + square_size/3, screen_height - 820, 20, GRAY);
-        
-        }
-        
+        UnloadTexture(pawnTexture);
+      //  int testY = board_offset + 3 * square_size;
+     //   int testX = board_offset + 4 * square_size;
+     //   whitePawn.Draw(testX,testY,square_size);
         
         EndDrawing();
     }

@@ -7,7 +7,7 @@
 class Piece {
     public:
      Piece(char color, const char* texturePath);
-     virtual ~Piece() {}
+     virtual ~Piece();
      virtual void Draw(int x, int y,int squareSize) = 0;
 
     char getColor() const {return color;}
