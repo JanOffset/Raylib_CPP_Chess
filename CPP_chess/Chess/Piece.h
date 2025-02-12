@@ -6,23 +6,15 @@
 
 class Piece {
     public:
-     Piece(char color, char abbr);
-     virtual ~Piece() = default;
+     Piece(char color, const char* texturePath);
+     virtual ~Piece() {}
      virtual void Draw(int x, int y,int squareSize) = 0;
 
     char getColor() const {return color;}
-    char getAbbreviation() const {return abbreviation;}
-
+    
     protected:
         char color;
-        char abbreviation;
+        Texture2D texture;
 
 };
-
-class Pawn : public Piece {
-    public:
-    Pawn(char color);
-    void Draw(int x, int y, int squareSize) override;
-};
-
 #endif

@@ -1,9 +1,8 @@
 #include "Piece.h"
+#include "raylib.h"
 
-Piece::Piece(char color, char abbr) : color(color), abbreviation(abbr) {}
+Piece::Piece(char color,const char* texturePath) : color(color) {texture = LoadTexture(texturePath)}
 
-Pawn::Pawn(char color) : Piece(color, (color == 'w' ? 'P' : 'p')) {}
-
-void Pawn::Draw(int x, int y, int squareSize) {
-    DrawText(TextFormat("%c", abbreviation),x + squareSize/3, y + squareSize/3, 20, (color == 'w' ? BLACK : WHITE));
+Piece::~Piece() {
+    UnloadTexture(texture);
 }
